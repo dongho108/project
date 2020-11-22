@@ -9,9 +9,11 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.layers import Input, LSTM, Embedding, Dense, Concatenate
 from tensorflow.keras.models import Model
+import tensorflow as tf
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 from attention import AttentionLayer
 import urllib.request
+from sklearn.feature_exraction.text import TfidVectorizer
 
 
 
@@ -21,8 +23,18 @@ import urllib.request
 
 np.random.seed(seed=0)
 #data load
-data = pd.read_csv("Reviews.csv", nrows = 1000)
+data = pd.read_csv("Reviewss.csv", nrows = 100, encoding = 'CP949')
 data = data[['Text', 'Summary']]
+
+# test data의 실제 답
+# solution1 = []
+# solution2 = []
+# solution3 = []
+# solution4 = []
+# solution5 = []
+#
+# file = open('solution.txt', 'r')
+
 
 #data refine
 data.drop_duplicates(subset=['Text'], inplace=True)
@@ -110,36 +122,36 @@ data.dropna(axis = 0, inplace = True)
 text_len = [len(s.split()) for s in data['Text']]
 summary_len = [len(s.split()) for s in data['Summary']]
 
-# print('텍스트의 최소 길이 : {}'.format(np.min(text_len)))
-# print('텍스트의 최대 길이 : {}'.format(np.max(text_len)))
+print('텍스트의 최소 길이 : {}'.format(np.min(text_len)))
+print('텍스트의 최대 길이 : {}'.format(np.max(text_len)))
 # print('텍스트의 평균 길이 : {}'.format(np.mean(text_len)))
-# print('요약의 최소 길이 : {}'.format(np.min(summary_len)))
-# print('요약의 최대 길이 : {}'.format(np.max(summary_len)))
+print('요약의 최소 길이 : {}'.format(np.min(summary_len)))
+print('요약의 최대 길이 : {}'.format(np.max(summary_len)))
 # print('요약의 평균 길이 : {}'.format(np.mean(summary_len)))
 
-# plt.subplot(1,2,1)
-# plt.boxplot(summary_len)
-# plt.title('Summary')
-# plt.subplot(1,2,2)
-# plt.boxplot(text_len)
-# plt.title('Text')
-# plt.tight_layout()
-# plt.show()
+plt.subplot(1,2,1)
+plt.boxplot(summary_len)
+plt.title('Summary')
+plt.subplot(1,2,2)
+plt.boxplot(text_len)
+plt.title('Text')
+plt.tight_layout()
+plt.show()
 
-# plt.title('Summary')
-# plt.hist(summary_len, bins=40)
-# plt.xlabel('length of samples')
-# plt.ylabel('number of samples')
-# plt.show()
+plt.title('Summary')
+plt.hist(summary_len, bins=40)
+plt.xlabel('length of samples')
+plt.ylabel('number of samples')
+plt.show()
 
-# plt.title('Text')
-# plt.hist(text_len, bins=40)
-# plt.xlabel('length of samples')
-# plt.ylabel('number of samples')
-# plt.show()
+plt.title('Text')
+plt.hist(text_len, bins=40)
+plt.xlabel('length of samples')
+plt.ylabel('number of samples')
+plt.show()
 
-text_max_len = 50
-summary_max_len = 8
+text_max_len = 250
+summary_max_len = 35
 
 def below_threshold_len(max_len, nested_list):
   cnt = 0
@@ -151,8 +163,10 @@ def below_threshold_len(max_len, nested_list):
 below_threshold_len(text_max_len, data['Text'])
 below_threshold_len(summary_max_len, data['Summary'])
 
-data = data[data['Text'].apply(lambda x: len(x.split()) <= text_max_len)]
-data = data[data['Summary'].apply(lambda x: len(x.split()) <= summary_max_len)]
+# 최대길이보다 큰 샘플 제거
+# data = data[data['Text'].apply(lambda x: len(x.split()) <= text_max_len)]
+# data = data[data['Summary'].apply(lambda x: len(x.split()) <= summary_max_len)]
+
 # print('전체 샘플수 :',(len(data)))
 
 # 요약 데이터에는 시작 토큰과 종료 토큰을 추가한다.
@@ -169,8 +183,10 @@ indices = np.arange(encoder_input.shape[0])
 np.random.shuffle(indices)
 # print(indices)
 
-n_of_val = int(len(encoder_input)*0.2)
+# n_of_val = int(len(encoder_input)*0.2)
 # print('테스트 데이터의 수 :',n_of_val)
+
+n_of_val = 10 # 내가 넣은 실제 수능 지문
 
 encoder_input_train = encoder_input[:-n_of_val]
 decoder_input_train = decoder_input[:-n_of_val]
@@ -180,10 +196,11 @@ encoder_input_test = encoder_input[-n_of_val:]
 decoder_input_test = decoder_input[-n_of_val:]
 decoder_target_test = decoder_target[-n_of_val:]
 
-# print('훈련 데이터의 개수 :', len(encoder_input_train))
-# print('훈련 레이블의 개수 :',len(decoder_input_train))
-# print('테스트 데이터의 개수 :',len(encoder_input_test))
-# print('테스트 레이블의 개수 :',len(decoder_input_test))
+print('훈련 데이터의 개수 :', len(encoder_input_train))
+print('훈련 레이블의 개수 :',len(decoder_input_train))
+print('테스트 데이터의 개수 :',len(encoder_input_test))
+print('테스트 레이블의 개수 :',len(decoder_input_test))
+print('테스트 데이터', encoder_input_test)
 
 src_tokenizer = Tokenizer()
 src_tokenizer.fit_on_texts(encoder_input_train)
@@ -346,7 +363,7 @@ model.compile(optimizer='rmsprop', loss='sparse_categorical_crossentropy')
 es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience = 2)
 history = model.fit(x = [encoder_input_train, decoder_input_train], y = decoder_target_train, \
           validation_data = ([encoder_input_test, decoder_input_test], decoder_target_test),
-          batch_size = 256, callbacks=[es], epochs = 50)
+          batch_size = 10, callbacks=[es], epochs = 50)
 
 # plt.plot(history.history['loss'], label='train')
 # plt.plot(history.history['val_loss'], label='test')
@@ -363,6 +380,8 @@ tar_index_to_word = tar_tokenizer.index_word # 요약 단어 집합에서 정수
 
 # 인코더 설계
 encoder_model = Model(inputs=encoder_inputs, outputs=[encoder_outputs, state_h, state_c])
+encoder_model.save("encoder_model")
+# encoder_model = tf.keras.models.load_model("encoder_model")
 
 # 이전 시점의 상태들을 저장하는 텐서
 decoder_state_input_h = Input(shape=(hidden_size,))
@@ -386,6 +405,7 @@ decoder_outputs2 = decoder_softmax_layer(decoder_inf_concat)
 decoder_model = Model(
     [decoder_inputs] + [decoder_hidden_state_input,decoder_state_input_h, decoder_state_input_c],
     [decoder_outputs2] + [state_h2, state_c2])
+decoder_model.save("decode_model")
 
 def decode_sequence(input_seq):
     # 입력으로부터 인코더의 상태를 얻음
@@ -435,8 +455,33 @@ def seq2summary(input_seq):
             temp = temp + tar_index_to_word[i] + ' '
     return temp
 
-for i in range(0, 149):
-    print("원문 : ",seq2text(encoder_input_test[i]))
-    print("실제 요약문 :",seq2summary(decoder_input_test[i]))
-    print("예측 요약문 :",decode_sequence(encoder_input_test[i].reshape(1, text_max_len)))
+
+
+
+for i in range(0, 9):
+    original_text = seq2text(encoder_input_test[i])
+    real_summary = seq2summary(decoder_input_test[i])
+    expect_summary = decode_sequence(encoder_input_test[i].reshape(1, text_max_len))
+    print("원문 : %s" % original_text)
+    print("실제 요약문 : %s" % real_summary)
+    print("예측 요약문 : %s" % expect_summary)
     print("\n")
+
+    # TF-IDF를 통해 벡터화
+
+    # 객체 생성
+    tfidf_vectorizer = TfidVectorizer()
+
+    # 문장 벡터와 진행
+    tfidf_matrix = tfidf_vectorizer.fit_transform(expect_summary)
+
+    # 각 단어
+    text = tfidf_vectorizer.get_feature_names()
+
+    # 각 단어의 벡터 값
+    idf = tfidf_vectorizer.idf_
+
+
+
+
+
