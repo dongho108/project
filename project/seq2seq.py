@@ -307,6 +307,7 @@ encoder_output2, state_h2, state_c2 = encoder_lstm2(encoder_output1)
 encoder_lstm3 = LSTM(hidden_size, return_state=True, return_sequences=True, dropout=0.4, recurrent_dropout=0.4)
 encoder_outputs, state_h, state_c= encoder_lstm3(encoder_output2)
 
+
 # 디코더
 decoder_inputs = Input(shape=(None,))
 
@@ -326,8 +327,6 @@ decoder_softmax_outputs = decoder_softmax_layer(decoder_outputs)
 model = Model([encoder_inputs, decoder_inputs], decoder_softmax_outputs)
 # print(model.summary())
 
-
-# print(model.summary())
 
 model.compile(optimizer='rmsprop', loss='sparse_categorical_crossentropy')
 
@@ -349,36 +348,25 @@ src_index_to_word = src_tokenizer.index_word # 원문 단어 집합에서 정수
 tar_word_to_index = tar_tokenizer.word_index # 요약 단어 집합에서 단어 -> 정수를 얻음
 tar_index_to_word = tar_tokenizer.index_word # 요약 단어 집합에서 정수 -> 단어를 얻음
 
-# 인코더 설계
-encoder_model = Model(inputs=encoder_inputs, outputs=[encoder_outputs, state_h, state_c])
-# encoder_model.save("encoder_model")
-# encoder_model = tf.keras.models.load_model("encoder_model")
 
+# 모델 테스트를 위한 seq2seq 모델
 
+encoder_model = Model(input=encoder_inputs, output=[encoder_outputs])
 
-# 이전 시점의 상태들을 저장하는 텐서
 decoder_state_input_h = Input(shape=(hidden_size,))
 decoder_state_input_c = Input(shape=(hidden_size,))
 
 dec_emb2 = dec_emb_layer(decoder_inputs)
-# 문장의 다음 단어를 예측하기 위해서 초기 상태(initial_state)를 이전 시점의 상태로 사용. 이는 뒤의 함수 decode_sequence()에 구현
-# 훈련 과정에서와 달리 LSTM의 리턴하는 은닉 상태와 셀 상태인 state_h와 state_c를 버리지 않음.
-decoder_outputs2, state_h2, state_c2 = decoder_lstm(dec_emb2, initial_state=[decoder_state_input_h, decoder_state_input_c])
+
+decoder_states_inputs = [decoder_state_input_h, decoder_state_input_c]
+decoder_outputs2, state_h, state_c = decoder_lstm(dec_emb2, initial_state=[decoder_state_input_h, decoder_state_input_c])
+
+decoder_outputs2 = decoder_softmax_layer(decoder_outputs2)
+decoder_model = Model(inputs=[decoder_inputs] + [decoder_state_input_h, decoder_state_input_c], outputs=[decoder_outputs2] + [state_h, state_c])
 
 
-# 어텐션 함수
-decoder_hidden_state_input = Input(shape=(text_max_len, hidden_size))
-attn_out_inf, attn_states_inf = attn_layer([decoder_hidden_state_input, decoder_outputs2])
-decoder_inf_concat = Concatenate(axis=-1, name='concat')([decoder_outputs2, attn_out_inf])
 
-# 디코더의 출력층
-decoder_outputs2 = decoder_softmax_layer(decoder_inf_concat)
 
-# 최종 디코더 모델
-decoder_model = Model(
-    [decoder_inputs] + [decoder_state_input_h, decoder_state_input_c],
-    [decoder_outputs2] + [state_h2, state_c2])
-# decoder_model.save("decode_model")
 
 def decode_sequence(input_seq):
     # 입력으로부터 인코더의 상태를 얻음
