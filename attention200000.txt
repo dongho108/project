@@ -1,0 +1,861 @@
+C:\Users\user\PycharmProjects\seq2seq_attention_project\venv\Scripts\python.exe C:/Users/user/PycharmProjects/seq2seq_attention_project/project/Attetion_run.py
+2020-11-29 13:00:19.350763: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+C:\Users\user\PycharmProjects\seq2seq_attention_project\venv\lib\site-packages\bs4\__init__.py:336: MarkupResemblesLocatorWarning: "..." looks like a filename, not markup. You should probably open this file and pass the filehandle into Beautiful Soup.
+  MarkupResemblesLocatorWarning
+C:\Users\user\PycharmProjects\seq2seq_attention_project\venv\lib\site-packages\bs4\__init__.py:424: MarkupResemblesLocatorWarning: "http://www.amazon.com/gp/product/b007i7yygy/ref=cm_cr_rev_prod_title" looks like a URL. Beautiful Soup is not an HTTP client. You should probably use an HTTP client like requests to get the document behind the URL, and feed that document to Beautiful Soup.
+  MarkupResemblesLocatorWarning
+C:\Users\user\PycharmProjects\seq2seq_attention_project\venv\lib\site-packages\bs4\__init__.py:336: MarkupResemblesLocatorWarning: "." looks like a filename, not markup. You should probably open this file and pass the filehandle into Beautiful Soup.
+  MarkupResemblesLocatorWarning
+C:\Users\user\PycharmProjects\seq2seq_attention_project\venv\lib\site-packages\bs4\__init__.py:424: MarkupResemblesLocatorWarning: "http://www.amazon.com/gp/product/b000v9lq30/ref=cm_cr_rev_prod_title" looks like a URL. Beautiful Soup is not an HTTP client. You should probably use an HTTP client like requests to get the document behind the URL, and feed that document to Beautiful Soup.
+  MarkupResemblesLocatorWarning
+C:\Users\user\PycharmProjects\seq2seq_attention_project\venv\lib\site-packages\bs4\__init__.py:424: MarkupResemblesLocatorWarning: "http://www.amazon.com/gp/product/b001eq58fq/ref=cm_cr_rev_prod_title" looks like a URL. Beautiful Soup is not an HTTP client. You should probably use an HTTP client like requests to get the document behind the URL, and feed that document to Beautiful Soup.
+  MarkupResemblesLocatorWarning
+2020-11-29 13:02:06.677705: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library nvcuda.dll
+2020-11-29 13:02:06.700118: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:01:00.0 name: GeForce GTX 1060 3GB computeCapability: 6.1
+coreClock: 1.7085GHz coreCount: 9 deviceMemorySize: 3.00GiB deviceMemoryBandwidth: 178.99GiB/s
+2020-11-29 13:02:06.700408: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2020-11-29 13:02:06.706382: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+2020-11-29 13:02:06.710157: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
+2020-11-29 13:02:06.711566: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
+2020-11-29 13:02:06.716232: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
+2020-11-29 13:02:06.718719: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
+2020-11-29 13:02:06.719762: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2020-11-29 13:02:06.719974: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-11-29 13:02:06.720303: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2020-11-29 13:02:06.727647: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x18339d60f60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-11-29 13:02:06.727855: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-11-29 13:02:06.728110: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:01:00.0 name: GeForce GTX 1060 3GB computeCapability: 6.1
+coreClock: 1.7085GHz coreCount: 9 deviceMemorySize: 3.00GiB deviceMemoryBandwidth: 178.99GiB/s
+2020-11-29 13:02:06.728399: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2020-11-29 13:02:06.728549: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+2020-11-29 13:02:06.728916: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
+2020-11-29 13:02:06.729060: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
+2020-11-29 13:02:06.729202: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
+2020-11-29 13:02:06.729343: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
+2020-11-29 13:02:06.729487: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2020-11-29 13:02:06.729839: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-11-29 13:02:07.254340: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-11-29 13:02:07.254495: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
+2020-11-29 13:02:07.254590: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
+2020-11-29 13:02:07.254828: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 2094 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1060 3GB, pci bus id: 0000:01:00.0, compute capability: 6.1)
+2020-11-29 13:02:07.257612: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x1836b554fa0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-11-29 13:02:07.257809: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1060 3GB, Compute Capability 6.1
+WARNING:tensorflow:Layer lstm will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Layer lstm_1 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Layer lstm_2 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Layer lstm_3 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Layer lstm will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Layer lstm_1 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Layer lstm_2 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+WARNING:tensorflow:Layer lstm_3 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+2020-11-29 13:02:16.238086: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+원문 :  went local farmer market recently amazing peach creme brulee wanted learn make peach flavoring obviously going use chunks peaches flavor saw product figured would give go surprise turned perfect flavoring creme brulee used teaspoon 
+실제 요약문 : perfect flavoring 
+예측 요약문 :  amazing
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  taste way like peaches grow georgia wasted wished could send back 
+실제 요약문 : peach extract 
+예측 요약문 :  not what expected
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  must use minimum double amount recommend begin get peach taste point peach tea 
+실제 요약문 : pure peach extract 
+예측 요약문 :  lipton tea
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  much say beyond yum honey delicious wonderful coffee tea english muffins 
+실제 요약문 : yum 
+예측 요약문 :  delicious
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.70710678]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  hands best tea ever entire life black tea infused orange flavor contains orange peel incredibly glad found store usually buy stopped selling recently 
+실제 요약문 : the best tea ever 
+예측 요약문 :  best tea ever
+코사인 유사도 :  [[0.77651453]]
+유클리디언 유사도 :  [[0.18034489]]
+맨하탄 유사도 :  [[0.27438807]]
+
+
+원문 :  ordered tea along several roland tea tins worst lot expecting something bursting goodness figured get constant comment store delicious even better orange flavor completely bits orange peel enough give tea orange flavor spices spice taste tea fine black tea orange spice 
+실제 요약문 : where is the orange 
+예측 요약문 :  not what expected
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.37893738]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  tea taste horrible tea orange flavor total waste recommend save money 
+실제 요약문 : without taste 
+예측 요약문 :  weak
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  tea best tasting green tea ever whole entire life bad taste get today 
+실제 요약문 : best cold brew green tea ever 
+예측 요약문 :  best tea ever
+코사인 유사도 :  [[0.57973867]]
+유클리디언 유사도 :  [[0.22105064]]
+맨하탄 유사도 :  [[0.51578308]]
+
+
+원문 :  far ive used chicken breasts grill flavor good enough kick neighbor dinner us one night liked much asked us order 
+실제 요약문 : good taste little kick great chicken 
+예측 요약문 :  best rub ever
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.33820396]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  best seasoning grilled chicken bought years smaller size available grocery stores expensive becoming harder find thrilled find huge bottle amazon much better price amazon never fails provide competitive prices definitely recommend trying chicken 
+실제 요약문 : the best seasoning 
+예측 요약문 :  best seasoning ever
+코사인 유사도 :  [[0.50310261]]
+유클리디언 유사도 :  [[0.29182913]]
+맨하탄 유사도 :  [[0.41270871]]
+
+
+원문 :  use make beer chicken buy small chicken grocery rub seasoning inside outside bird stick half full beer butt stand grill close lid let grill hour finished chicken tasty moist better store bought chicken like buying amazon get big bottles last long time 
+실제 요약문 : better than store chicken and easy 
+예측 요약문 :  best seasoning ever
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.33820396]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  kitties go crazy bought bunch different natural cat food brands favorite especially chicken salmon one lick gravy first eat rest whole time impressed ingredients price keep menu 
+실제 요약문 : love these natural balance pouches 
+예측 요약문 :  my cats love this
+코사인 유사도 :  [[0.12735953]]
+유클리디언 유사도 :  [[0.31442533]]
+맨하탄 유사도 :  [[0.84045345]]
+
+
+원문 :  pleased customer service made sure second order crab legs shipped perfectly say ready order crab legs family top list taste excellent shipment arrived time family make sure everything right order 
+실제 요약문 : wild crab lb 
+예측 요약문 :  excellent service
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  like say company best comes issue ordered canadian snow crab clusters best ever came time look good need order worth every sweet tasty best nice co something right great love service crab legs best im sure products fantastic rate stars order today like seafood 
+실제 요약문 : happy as crab 
+예측 요약문 :  the best
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  freakin awesome lbs top quality better many restaurants ordering second batch prepare place several legs pot boiling water minute less stir em already cooked want heat cooking ruin end piece piece take bit longer 
+실제 요약문 : great quality 
+예측 요약문 :  love this stuff
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  one tasty tasty snack bar like cookies delicious dark chocolately goodness lots peppermint flavor eating lot tolerate sugar great bar cannot say enough taste energy bars come long way tasted like sawdust glue bars simply amazing kids favorites one mores chocolate dipped coconut 
+실제 요약문 : wow excellent like cookie 
+예측 요약문 :  delicious
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.47140452]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  son school favorite favorite preserves peanut butter sandwich ordering second order set probably extras keep happy 
+실제 요약문 : my son loves it 
+예측 요약문 :  best ever
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  superb product tasty overly sweet touch lemon helps stock amazon winning product lower prices would 
+실제 요약문 : delicious 
+예측 요약문 :  great flavor
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  wanted great kids family wanted new years day 
+실제 요약문 : great find 
+예측 요약문 :  great
+코사인 유사도 :  [[0.57973867]]
+유클리디언 유사도 :  [[0.38287094]]
+맨하탄 유사도 :  [[0.51578308]]
+
+
+원문 :  purchased cookies gift someone loved fresh little healthier would recommend 
+실제 요약문 : oatmeal cookies 
+예측 요약문 :  great cookies
+코사인 유사도 :  [[0.33609693]]
+유클리디언 유사도 :  [[0.41314834]]
+맨하탄 유사도 :  [[0.58427998]]
+
+
+원문 :  yuck says cookies oatmeal raisin cookies favorite make starting next batch mrs fields must changed recipe cookies inedible gave daughter take work hopefully nobody got sick eating never purchase cookies anyone consider warned please 
+실제 요약문 : mrs oatmeal raisin cookies 
+예측 요약문 :  awful
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.47140452]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  thought would taste ok nothing bad instead tasted terrific nothing bad 
+실제 요약문 : taste great 
+예측 요약문 :  not bad
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  best gluten free candy tasted hope see stores guess order amazon 
+실제 요약문 : great find 
+예측 요약문 :  best gluten free cookies
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  waiting try long time finally found amazon com know sell new york city well delicious ordered box mom gluten allergy going love 
+실제 요약문 : these are fantastic and gluten free 
+예측 요약문 :  gluten free
+코사인 유사도 :  [[0.44943642]]
+유클리디언 유사도 :  [[0.27352097]]
+맨하탄 유사도 :  [[0.66865139]]
+
+
+원문 :  enjoyed bars probably ever buy looking organic chocolate bar rice crisp like candy bar soft processed right word organic rice crisp chocolate bars easy find alas 
+실제 요약문 : nice but not what wanted 
+예측 요약문 :  delicious
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.43701602]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  best bars taste like truffle chocolate good creamy placing another order 
+실제 요약문 : bars 
+예측 요약문 :  best chocolate bar
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.51763809]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  since started use product year ago even try find brands stick brand ex coconut oil long get take least two throughout day use every food eat instead butter one top natural cures buy simply food 
+실제 요약문 : well being in jar 
+예측 요약문 :  great tasting
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  using product every day along cod liver oil months dry damaged skin sun months tried years damaged legs nothing worked also given feeling well feel something good 
+실제 요약문 : coconut oil 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  tried couple brands found one one best one use household cook add coffee eat raw right jar etc gray hair since started using daily using hair coloring folks seen several months 
+실제 요약문 : good brand of coconut oil 
+예측 요약문 :  best instant coffee have ever tried
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.30182395]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  bought product little results using skin hair going even close talked great well joke amazing leaves skin hair soft day eat would like give side effects heard far want risk recommend product want beautiful skin shiny hair 
+실제 요약문 : best yet 
+예측 요약문 :  works well
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  use hair lasting time glad went ahead bought ounce jar id without coconut oil lol 
+실제 요약문 : coconut oil 
+예측 요약문 :  good for
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  fantastic flavor coconut oil made regular staple cooking frequently replacing butter canola oil even great butter replacement bread regret buy larger tub going fast 
+실제 요약문 : fantastic stuff 
+예측 요약문 :  best coconut oil
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  taking coconut oil years best retail market wish glass one 
+실제 요약문 : the reviews do not 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  oil awesome frying taste great great salad dressing son loves taste 
+실제 요약문 : great alternative oil 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.26055567]]
+유클리디언 유사도 :  [[0.39136581]]
+맨하탄 유사도 :  [[0.71072334]]
+
+
+원문 :  love coconut oil ordered great value buying 
+실제 요약문 : coconut oil 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  used product smoothies son loves additionally use oil shower skin conditioner made skin look great stretch marks belly disappeared quickly highly recommend 
+실제 요약문 : this stuff is great 
+예측 요약문 :  great for
+코사인 유사도 :  [[0.22028815]]
+유클리디언 유사도 :  [[0.36982386]]
+맨하탄 유사도 :  [[0.77493823]]
+
+
+원문 :  first time using product cannot say enough good fry butter toast gives homemade cake icing surprisingly wonderful flavor excellent healthy alternative highly recommend 
+실제 요약문 : amazing product 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.33609693]]
+유클리디언 유사도 :  [[0.41314834]]
+맨하탄 유사도 :  [[0.58427998]]
+
+
+원문 :  bought dog yeast infection used skin feed loves great smell great value amount get organic like plastic container great product 
+실제 요약문 : value and quality 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  product super tastes amazing best get far cold pressed extra virgin organic price enough blow mind everyone hand internal issues also skin problems well love 
+실제 요약문 : wonderful goodness 
+예측 요약문 :  best
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  repeat customer yet try another brand coconut oil love nutiva far vitamin shoppe great vendor prompt communication prompt everything ship great 
+실제 요약문 : organic coconut oil 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  purchased item smaller quantity outrageous amount money extraordinary value 
+실제 요약문 : more value for your money 
+예측 요약문 :  good product but expensive
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.33385054]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  bought reasons glad absorbs skin quickly feel really greasy heard benefits cooking coconut oil well might purchase another jar use purpose 
+실제 요약문 : love this product 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.26055567]]
+유클리디언 유사도 :  [[0.39136581]]
+맨하탄 유사도 :  [[0.71072334]]
+
+
+원문 :  brand best tasting tried others like smells taste like coconut toast sprouted bread spread add little salt maybe nutritional yeast use agave nectar instead yeast sweet fix bought gallon another brand like buying brand 
+실제 요약문 : the best tasting 
+예측 요약문 :  best tasting
+코사인 유사도 :  [[0.70929727]]
+유클리디언 유사도 :  [[0.24421702]]
+맨하탄 유사도 :  [[0.35744596]]
+
+
+원문 :  used first time night cream since skin dry weather los angeles woke noticed face looking refreshed hydrated without products leave behind like actually went beyond surface skin 
+실제 요약문 : excellent value and product love it 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.17578608]]
+유클리디언 유사도 :  [[0.33535135]]
+맨하탄 유사도 :  [[0.84160288]]
+
+
+원문 :  favorite coconut oil following reasons delightfully smooth like coconutty fries cooks bakes like hand complaint one side empty hope find problem future purchases 
+실제 요약문 : cut above the rest 
+예측 요약문 :  best coconut oil
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.37893738]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  going get better deal coconut oil product best use put teaspoon coconut oil morning protein shake along organic berries teaspoon almond butter taste great overall health keep energized well repeat hesitate purchase excellent product excellent price 
+실제 요약문 : best deal ever 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  coconut oil great quality price great paid oz jar local stores love cooking product scrambled eggs seem come fluffy warn new users use coconut oil light foods oil slight coconut taste fragrance foods taste disappears completely 
+실제 요약문 : great deal 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.33609693]]
+유클리디언 유사도 :  [[0.41314834]]
+맨하탄 유사도 :  [[0.58427998]]
+
+
+원문 :  compare nutiva coconut oil one tried bearing spectrum label perhaps spectrum oil exactly good flavor whatsoever nutiva coconut oil hand actually delicious coconut flavor well think delicious like coconut flavor would better try different brand 
+실제 요약문 : tasty and nutritious 
+예측 요약문 :  not bad
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  according research online coconut oil work great hair oil reported hair leaves hair soft use oil pre conditioner min longer heat followed shampoo shampoo apply coconut oil oils seal oil hair product cost effective natural importantly work 
+실제 요약문 : best oil for hair 
+예측 요약문 :  great for hair
+코사인 유사도 :  [[0.41120706]]
+유클리디언 유사도 :  [[0.29486722]]
+맨하탄 유사도 :  [[0.5544387]]
+
+
+원문 :  think always use coconut oil amazing since cannot get oil actually wish bought brand coconut oil smooth creamy sooooo delicious 
+실제 요약문 : amazing oil 
+예측 요약문 :  best coconut oil ever
+코사인 유사도 :  [[0.22028815]]
+유클리디언 유사도 :  [[0.36982386]]
+맨하탄 유사도 :  [[0.77493823]]
+
+
+원문 :  brands coconut oil one smelled much fresher stayed way longer 
+실제 요약문 : great product 
+예측 요약문 :  coconut oil
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  use coconut oil everything cooking adding aging finicky standard poodles food nutiva coconut oil excellent definitely purchase future shipping fast product exactly expected 
+실제 요약문 : love coconut oil 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  family uses place butter oils cooking needs tastes sooo good nice lite sweet taste also much healthier butter oils use trouble sticking long adequate coconut oil used cooking 
+실제 요약문 : delicious 
+예측 요약문 :  great
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.70710678]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  love oil slight taste coconut fry use dressings baked products came great condition listed date happy order 
+실제 요약문 : coconut oil 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  pleased product first purchase definitely last skeptical dissapointed spoonful good 
+실제 요약문 : first time 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  happy coconut oil shipped quickly pure pleasant light coconut taste great adding yogurt eating price also right 
+실제 요약문 : best coconut oil you can find anywhere 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.34833148]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  get bake makes best pie crust biscuits ever also switched butter coconut oil frying eggs requires lot less get job done great product buying run oh also extremely picky eater coconut flavor tolerate taste coconut flavor using happy camper 
+실제 요약문 : super awesome 
+예측 요약문 :  best gluten free pasta
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  second purchase product may think never use let tell many uses great results want run used cooking skin hair senior dogs aid coat could pleased thank nutiva 
+실제 요약문 : awesome will never be without it 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.3660254]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  coconut oil sooooo great smells amazing apply hair light moisturizer oil also use along body lotion skin furthermore cook purchase oil times gave boyfriend jar since extremely dry skin loves skin looks much better less dry smoother also cooks value oz jar best buy future 
+실제 요약문 : smells delicious 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  wanted try product mental golden years worried would taste like whether could use well delicious use instead butter especially toast hot cereals make every single thing taste like coconut makes taste good always use thanks amazon com 
+실제 요약문 : organic extra virgin coconut oil 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.38742589]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  soooo delicious reviewed taste coconut guess complain purchased vegetable oil olive oil coconut oil hence flavor use toasted bagels potatoes stir fry string beans almond slivers used hair conditioner son baby used delicate skin instead baby great massage oil adults well 
+실제 요약문 : best darn coconut oil ever 
+예측 요약문 :  great flavor
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.38742589]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  using organic coconut oil several months nutiva far best oil highly recommend product 
+실제 요약문 : the best oil ever 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  item arrived time good good adds touch coconut taste also good use moisturizer skin 
+실제 요약문 : coconut oil 
+예측 요약문 :  good
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  wondering coconut oil first let sit got fry fish fries coconut oil truely turn around taste fish hint coconut flavor fries oil oil taste fresh taste hint coconut prefect fry used oil fish fries without fries tasting like fish love recommend friends family also facebook 
+실제 요약문 : love it 
+예측 요약문 :  delicious
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  great product although oil mild coconut flavor great perhaps others previously using another brand coconut taste purchase cheaper buying local health food store yes happy enjoy benefits using organic coconut oil cuisine lotion 
+실제 요약문 : great price with shipping 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.22028815]]
+유클리디언 유사도 :  [[0.36982386]]
+맨하탄 유사도 :  [[0.77493823]]
+
+
+원문 :  plan use place canola oil switched low carb diet recommended product know would ever want use anything else liquid opened though sure warm day since says supposed solid less really good quality stuff lot oil 
+실제 요약문 : great oil 
+예측 요약문 :  not bad
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  tried hair skin help dry skin well softened hair skin oily cannot even tell even melts hand solid colder season great product 
+실제 요약문 : good for use 
+예측 요약문 :  good for hair
+코사인 유사도 :  [[0.50310261]]
+유클리디언 유사도 :  [[0.29182913]]
+맨하탄 유사도 :  [[0.41270871]]
+
+
+원문 :  used nutiva organic coconut oil great replaced made egg shaped rice krispies treat easter kids ate also make pan used coconut oil coat pan thanks great product 
+실제 요약문 : great product 
+예측 요약문 :  great for baking
+코사인 유사도 :  [[0.26055567]]
+유클리디언 유사도 :  [[0.39136581]]
+맨하탄 유사도 :  [[0.71072334]]
+
+
+원문 :  great coconut flavor love jar big mouth easy scoop product like coconut oatmeals one perfect 
+실제 요약문 : love it 
+예측 요약문 :  delicious
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  use product skin oil like taste coconuts smell bit overcome initially got used 
+실제 요약문 : satisfied 
+예측 요약문 :  not very good
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.51763809]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  plan using coconut oil forever heart healthy adds extra sweetness baked goods cholesterol levels never better 
+실제 요약문 : great product 
+예측 요약문 :  great product
+코사인 유사도 :  [[1.]]
+유클리디언 유사도 :  [[0.]]
+맨하탄 유사도 :  [[0.]]
+
+
+원문 :  absolutely love stuff use hair longer totally love product 
+실제 요약문 : loving the coconut oil 
+예측 요약문 :  best
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.47140452]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  gotten coconut oil times seems best price around cooking get little coconut taste bad use cooking hair care body oil baby oil mouth rinse ya gotta love coconut oil 
+실제 요약문 : love it 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  trying many different brands coconut oil recently hard pressed buy anything nutiva fresh smell taste far superior brand tried economical one gallon tub last quite since need refrigerated opening quite home pantry 
+실제 요약문 : the best of the best 
+예측 요약문 :  best coconut oil
+코사인 유사도 :  [[0.24129914]]
+유클리디언 유사도 :  [[0.36428042]]
+맨하탄 유사도 :  [[0.73418236]]
+
+
+원문 :  love oil besides healthy oil good adds great taste food also use hair skin 
+실제 요약문 : love this oil 
+예측 요약문 :  great oil
+코사인 유사도 :  [[0.26055567]]
+유클리디언 유사도 :  [[0.39136581]]
+맨하탄 유사도 :  [[0.71072334]]
+
+
+원문 :  tell superior processed coconut oil big tub great 
+실제 요약문 : organic extra virgin coconut oil lb 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.3660254]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  best nearly best coconut oils tried super price glad manufacturer product 
+실제 요약문 : no 
+예측 요약문 :  best olives ever
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.51763809]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  good price product received promptly used product many times past like continue use 
+실제 요약문 : coconut oil 
+예측 요약문 :  good product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  love use coconut oil moisturizer skin hair suffer dry skin anymore daughter hair grown inch using weeks 
+실제 요약문 : fantastic 
+예측 요약문 :  coconut oil
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  great coconut oil using year love using high temperature cooking also especially popcorn coconut oil good tastes delicious product wonderful organic extra virgin consistent quality really pleased pricing amazon customer care one container arrived house broken amazon immediately sent new container definitely order nutiva organic extra virgin coconut oil 
+실제 요약문 : great coconut oil 
+예측 요약문 :  great coconut oil
+코사인 유사도 :  [[1.]]
+유클리디언 유사도 :  [[0.]]
+맨하탄 유사도 :  [[0.]]
+
+
+원문 :  buy every two months family use cooking massage business thing would make better option subscribe save would first click 
+실제 요약문 : we use this for everything 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.38742589]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  coconut oil great eating raw cooking prefer consistency flavor brands tried 
+실제 요약문 : organic extra virgin coconut oil ounce jar 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.34833148]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  used pay ounce jar brand coconut oil cannot believe pay ounces use oil cooking everyday also rub skin use hair even get compliments way skin looks way smell totally amazing forget health benefits hurt burn extra fat highly recommend product love coconut oil 
+실제 요약문 : cannot get any better than this 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.3660254]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  product pure unrefined fresh used may different things used cooking baking use hair skin well taking teaspoon daily really get lot money without doubt order seller even included letter want see product best interest heart 
+실제 요약문 : product 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.57973867]]
+유클리디언 유사도 :  [[0.38287094]]
+맨하탄 유사도 :  [[0.51578308]]
+
+
+원문 :  using product years found best value shipping time superb thank amazon com providing many great products great value website refer friends time many aware fact sell much books games movies 
+실제 요약문 : great product great value 
+예측 요약문 :  best price on the planet
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.36551854]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  tried several brands coconut oil find nutiva best use instead butter toast low temperature frying shortening baking excellent skin moisturizer ordering amazon sellers purchase oz less health food store price oz 
+실제 요약문 : organic coconut oil 
+예측 요약문 :  best coconut oil
+코사인 유사도 :  [[0.50310261]]
+유클리디언 유사도 :  [[0.29182913]]
+맨하탄 유사도 :  [[0.41270871]]
+
+
+원문 :  love buttery taste texture coconut oil use everything baking whipping frosting homemade buttery spread coconut inspired flavor looking total another brand may best 
+실제 요약문 : always in my house 
+예측 요약문 :  best tasting olive oil
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.35355339]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  happy quick delivery time product ordered one bottle last month pleased enough ordered three however recent order came three items packaged plastic jars whereas first glass jar prefer glass ordered however shipping fast quality oil appears overall happy product seek glass jars future 
+실제 요약문 : coconut oil change in 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  love coconut oil smells tastes delicious makes wonderful skin moisturizer use baking cooking great mine arrived liquid form never become solid guess house temperature cool enough makes easier measure recipes bottle say becomes solid degrees anyhow great buy amazon enjoy 
+실제 요약문 : great tasting 
+예측 요약문 :  coconut oil
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  use oil pre shampoo treatment put hair throw scarf leave overnight even shampoos dry hair put shampoo hair stays still get clean still uses right happy purchase 
+실제 요약문 : perfect for hair 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  using product weeks sooooo much better smoother used highly recommended 
+실제 요약문 : wonderful product 
+예측 요약문 :  best
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  wont go quality product nutritional benefits think stars customer reviews speak however think find oz bucks best deal internet especially buy two choose super saver shipping option would challenge anybody find better deal pure coconut oil quality 
+실제 요약문 : best deal on the 
+예측 요약문 :  great price
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  received everything good order timely fashion done business vendor year 
+실제 요약문 : great product great store 
+예측 요약문 :  great service
+코사인 유사도 :  [[0.41120706]]
+유클리디언 유사도 :  [[0.34997112]]
+맨하탄 유사도 :  [[0.62606322]]
+
+
+원문 :  excellent product healthful tasty inexpensive purchased right vendor highly recommend 
+실제 요약문 : healthy cooking with coconut oil 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.38742589]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  like oil lot everything problem way shipping handled box obviously big oil bottles wrapped pieces wrapped throw inside box provide protection bottles arrived crushed point almost broken fortunately oil solid liquid leaking read another reviews honey problem way shipped got spilled place 
+실제 요약문 : oil is good bottle is not 
+예측 요약문 :  good oil poor packaging
+코사인 유사도 :  [[0.22028815]]
+유클리디언 유사도 :  [[0.31063433]]
+맨하탄 유사도 :  [[0.7326555]]
+
+
+원문 :  thrilled actually bought oil would done read reviews others thanks oil pure smells perfect delicate coconut aroma taste similar eating tender coconut would buy anyone looking perfect coconut oil one never regret 
+실제 요약문 : that takes you out of this world 
+예측 요약문 :  great tasting
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.34833148]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  enjoyed using product like specially cooking lightly fish vegetables gives faint pleasant taste coconut hardly wait tropical dishes 
+실제 요약문 : good quality great to cook with 
+예측 요약문 :  good stuff
+코사인 유사도 :  [[0.17578608]]
+유클리디언 유사도 :  [[0.33535135]]
+맨하탄 유사도 :  [[0.84160288]]
+
+
+원문 :  enjoying nutiva certified organic extra virgin coconut oil moderate low carb food plan fits right healthy diet use making low carb chocolate candy low carb chocolate cake spread use moisturizer skin also thought good value money completely satisfied 
+실제 요약문 : completely satisfied 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  love coconut oil use face body everyday night love smell also coconutty 
+실제 요약문 : love it 
+예측 요약문 :  coconut oil
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  really like oil coconut oil good oils touted good oil set use skin well 
+실제 요약문 : organic coconut oil 
+예측 요약문 :  great oil
+코사인 유사도 :  [[0.26055567]]
+유클리디언 유사도 :  [[0.39136581]]
+맨하탄 유사도 :  [[0.71072334]]
+
+
+코사인 유사도 평균 :  [[0.11918639]]
+유클리디언 유사도 평균 :  [[0.41950814]]
+맨하탄 유사도 평균 :  0.0
+
+Process finished with exit code 0

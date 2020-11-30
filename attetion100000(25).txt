@@ -1,0 +1,855 @@
+C:\Users\user\PycharmProjects\seq2seq_attention_project\venv\Scripts\python.exe C:/Users/user/PycharmProjects/seq2seq_attention_project/project/Attetion_run.py
+2020-11-29 13:35:14.620873: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+C:\Users\user\PycharmProjects\seq2seq_attention_project\venv\lib\site-packages\bs4\__init__.py:336: MarkupResemblesLocatorWarning: "..." looks like a filename, not markup. You should probably open this file and pass the filehandle into Beautiful Soup.
+  MarkupResemblesLocatorWarning
+C:\Users\user\PycharmProjects\seq2seq_attention_project\venv\lib\site-packages\bs4\__init__.py:424: MarkupResemblesLocatorWarning: "http://www.amazon.com/gp/product/b007i7yygy/ref=cm_cr_rev_prod_title" looks like a URL. Beautiful Soup is not an HTTP client. You should probably use an HTTP client like requests to get the document behind the URL, and feed that document to Beautiful Soup.
+  MarkupResemblesLocatorWarning
+2020-11-29 13:36:13.165419: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library nvcuda.dll
+2020-11-29 13:36:13.187137: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:01:00.0 name: GeForce GTX 1060 3GB computeCapability: 6.1
+coreClock: 1.7085GHz coreCount: 9 deviceMemorySize: 3.00GiB deviceMemoryBandwidth: 178.99GiB/s
+2020-11-29 13:36:13.187426: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2020-11-29 13:36:13.191562: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+2020-11-29 13:36:13.195694: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
+2020-11-29 13:36:13.197440: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
+2020-11-29 13:36:13.201774: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
+2020-11-29 13:36:13.204515: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
+2020-11-29 13:36:13.205589: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2020-11-29 13:36:13.205791: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-11-29 13:36:13.206138: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2020-11-29 13:36:13.213685: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x25a867f76d0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-11-29 13:36:13.213892: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-11-29 13:36:13.214246: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:01:00.0 name: GeForce GTX 1060 3GB computeCapability: 6.1
+coreClock: 1.7085GHz coreCount: 9 deviceMemorySize: 3.00GiB deviceMemoryBandwidth: 178.99GiB/s
+2020-11-29 13:36:13.214528: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2020-11-29 13:36:13.214675: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+2020-11-29 13:36:13.214816: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
+2020-11-29 13:36:13.215103: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
+2020-11-29 13:36:13.215297: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
+2020-11-29 13:36:13.215494: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
+2020-11-29 13:36:13.215693: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2020-11-29 13:36:13.215923: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2020-11-29 13:36:13.744873: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-11-29 13:36:13.745031: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
+2020-11-29 13:36:13.745124: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
+2020-11-29 13:36:13.745374: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 2094 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1060 3GB, pci bus id: 0000:01:00.0, compute capability: 6.1)
+2020-11-29 13:36:13.748221: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x25aacf43730 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-11-29 13:36:13.748420: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): GeForce GTX 1060 3GB, Compute Capability 6.1
+WARNING:tensorflow:Layer lstm will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Layer lstm_1 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Layer lstm_2 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Layer lstm_3 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Layer lstm will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Layer lstm_1 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:Layer lstm_2 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+WARNING:tensorflow:Layer lstm_3 will not use cuDNN kernel since it doesn't meet the cuDNN kernel criteria. It will use generic GPU kernel as fallback when running on GPU
+WARNING:tensorflow:No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+2020-11-29 13:36:23.299682: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+원문 :  occasionally like add little flavor club soda mineral water gives healthy choice sweet really restrict carb intake takes couple drops oz bottle water satisfy 
+실제 요약문 : good addition to healthy diet 
+예측 요약문 :  good
+코사인 유사도 :  [[0.33517574]]
+유클리디언 유사도 :  [[0.35816385]]
+맨하탄 유사도 :  [[0.79178314]]
+
+
+원문 :  got add water help son drink hates dont like either leaves funny taste 
+실제 요약문 : son hates it 
+예측 요약문 :  not bad
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  stevia orange great put drops water bottle hate drink water really taste therefore drink water like lemon stevia drops also 
+실제 요약문 : stevia 
+예측 요약문 :  great taste
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  love orange flavor tea smoothies mixed fresh lemon water sweetleaf one best tasting shipping fast wrapped securely 
+실제 요약문 : very good 
+예측 요약문 :  great tea
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  trying get away sugar substitutes love flavors tea coffee stevia flavors wonderful 
+실제 요약문 : this is great 
+예측 요약문 :  great tea
+코사인 유사도 :  [[0.26055567]]
+유클리디언 유사도 :  [[0.39136581]]
+맨하탄 유사도 :  [[0.71072334]]
+
+
+원문 :  okay citrus flavor expected tastes fake sweet leaf flavors excellent one average 
+실제 요약문 : not crazy about it 
+예측 요약문 :  not bad
+코사인 유사도 :  [[0.22028815]]
+유클리디언 유사도 :  [[0.36982386]]
+맨하탄 유사도 :  [[0.77493823]]
+
+
+원문 :  excellent every way amazon price better find store love use pasta product fast cooks perfection kraft excellent job people love enjoy 
+실제 요약문 : very very good 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.51316702]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  best macaroni cheese ever thank goodness amazon find grocery stores live bacon adds little something extra set aside regular macaroni cheese 
+실제 요약문 : delicious 
+예측 요약문 :  delicious
+코사인 유사도 :  [[1.]]
+유클리디언 유사도 :  [[0.]]
+맨하탄 유사도 :  [[0.]]
+
+
+원문 :  got creamy cheesy flavor original added smokiness bacon quick easy delicious 
+실제 요약문 : yum 
+예측 요약문 :  great cookies
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  something completely wrong way bacon bits packaged shells cheese taste additionally cheese sauce taste regular shells cheese sauce good way stick original 
+실제 요약문 : the bacon bits 
+예측 요약문 :  too salty
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  salt salt lovers dream come true amazing everything tried reccommend salt every home taste buds 
+실제 요약문 : the best of the best in salt 
+예측 요약문 :  great salt
+코사인 유사도 :  [[0.12725899]]
+유클리디언 유사도 :  [[0.38127353]]
+맨하탄 유사도 :  [[0.87330334]]
+
+
+원문 :  come recommended amounts use sweeten foods look online thought tasted ok husband brother thought left bitter aftertaste notice taste neither sister law 
+실제 요약문 : ok product 
+예측 요약문 :  not that great
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  favorite gourmet mustard perfect recipe addition condiment buy gift time 
+실제 요약문 : my favorite gourmet mustard 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  mints whiff local candy decided get anyway since latte mints tried like one direction 
+실제 요약문 : tastes great but smells 
+예측 요약문 :  the best
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  great pack kids lunch great way sit eat whole pack wish cheaper though 
+실제 요약문 : love 
+예측 요약문 :  great snack
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  family england love tea given tea gift skeptical first fell love soon tasted truly perfect tea love hot tea sun tea 
+실제 요약문 : an excellent authentic english tea 
+예측 요약문 :  great tea
+코사인 유사도 :  [[0.19431434]]
+유클리디언 유사도 :  [[0.35124187]]
+맨하탄 유사도 :  [[0.81451404]]
+
+
+원문 :  received tea house warming basket wonderful could drink day glad find amazon think next time go straight save couple bucks worth 
+실제 요약문 : the most wonderful tea 
+예측 요약문 :  great tea
+코사인 유사도 :  [[0.22028815]]
+유클리디언 유사도 :  [[0.36982386]]
+맨하탄 유사도 :  [[0.77493823]]
+
+
+원문 :  best tea ever smooth delicious highly recommend 
+실제 요약문 : ahmad english tea no 
+예측 요약문 :  great tea
+코사인 유사도 :  [[0.22028815]]
+유클리디언 유사도 :  [[0.36982386]]
+맨하탄 유사도 :  [[0.77493823]]
+
+
+원문 :  love tea full bodied flavor aroma smooth relaxing order two packs one hundred shipping much less 
+실제 요약문 : the best tea 
+예측 요약문 :  my favorite tea
+코사인 유사도 :  [[0.20199309]]
+유클리디언 유사도 :  [[0.36879844]]
+맨하탄 유사도 :  [[0.73759687]]
+
+
+원문 :  like tea tea think like much love basically caffeine free weekends indulge first tasted collection several teas cousins gave xmas went looking amazon glad found 
+실제 요약문 : tea 
+예측 요약문 :  great tea
+코사인 유사도 :  [[0.57973867]]
+유클리디언 유사도 :  [[0.38287094]]
+맨하탄 유사도 :  [[0.51578308]]
+
+
+원문 :  makes best tasting iced tea one best iced teas also good hot tea great company 
+실제 요약문 : great tea 
+예측 요약문 :  great tea
+코사인 유사도 :  [[1.]]
+유클리디언 유사도 :  [[0.]]
+맨하탄 유사도 :  [[0.]]
+
+
+원문 :  become favorite everyday tea great price shipping reasonable 
+실제 요약문 : wonderful tea 
+예측 요약문 :  great tea
+코사인 유사도 :  [[0.33609693]]
+유클리디언 유사도 :  [[0.41314834]]
+맨하탄 유사도 :  [[0.58427998]]
+
+
+원문 :  problem tea going fast great flavor love 
+실제 요약문 : english tea 
+예측 요약문 :  great tea
+코사인 유사도 :  [[0.33609693]]
+유클리디언 유사도 :  [[0.41314834]]
+맨하탄 유사도 :  [[0.58427998]]
+
+
+원문 :  since diagnosed type ii diabetes drink drink taste great enough sweetness satisfying 
+실제 요약문 : vitamin water zero 
+예측 요약문 :  great taste
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  elderly rottie lab mix feed food wet dry food add good sized spoonful food loves taste food instead sniffing happy food continuing order 
+실제 요약문 : healthy food happy dog 
+예측 요약문 :  great dog food
+코사인 유사도 :  [[0.41120706]]
+유클리디언 유사도 :  [[0.29486722]]
+맨하탄 유사도 :  [[0.5544387]]
+
+
+원문 :  like like ingredients good price wish subscribe save 
+실제 요약문 : dogs love it 
+예측 요약문 :  good stuff
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  chihuahua love moist healthy dog food nice buy locally price amazon much cheaper 
+실제 요약문 : healthy dog food for picky dog 
+예측 요약문 :  great dog food
+코사인 유사도 :  [[0.45520185]]
+유클리디언 유사도 :  [[0.26825668]]
+맨하탄 유사도 :  [[0.58671773]]
+
+
+원문 :  grocery chains seem carry cook serve lemon flavor buy case ended sharing friends makes great pie 
+실제 요약문 : my mother could not find this product anywhere 
+예측 요약문 :  great taste
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.33333333]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  using product years mixes fast consistant every time makes great pie difficulty finding item local grocery store able order amazon 
+실제 요약문 : great item 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.33609693]]
+유클리디언 유사도 :  [[0.41314834]]
+맨하탄 유사도 :  [[0.58427998]]
+
+
+원문 :  coffee delicious convenient easy use messy think great 
+실제 요약문 : good coffee 
+예측 요약문 :  great coffee
+코사인 유사도 :  [[0.33609693]]
+유클리디언 유사도 :  [[0.41314834]]
+맨하탄 유사도 :  [[0.58427998]]
+
+
+원문 :  wonderful see could get loved maxwell house coffee come house every two months less could buy store great deal great coffee thanks amazon 
+실제 요약문 : great deal great coffee 
+예측 요약문 :  my favorite
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.46410162]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  decaf coffee bitter taste maxwell house decaf coffee flavorful robust great drink bed 
+실제 요약문 : wonderful and flavorful even decaf 
+예측 요약문 :  great cup of coffee
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.33385054]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  convenience filter pack essential makes easier brew coffee 
+실제 요약문 : maxwell filter packs 
+예측 요약문 :  great coffee
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  greatest thing since sliced bread measuring thinking clean yeah thank maxwell house product 
+실제 요약문 : maxwell house filter packs ground coffee 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.3660254]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  great service wish order would perfer time 
+실제 요약문 : maxwell house coffee decaf 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  product makes coffee making quick easy put coffee packs pot need filters measuring unfortunately many supermarkets stopped carrying 
+실제 요약문 : maxwell house filter packs 
+예측 요약문 :  great espresso
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  wish amazon would get classic pate varieties fancy feast cats eat types love pate classic varieties please get flavors amazon buy 
+실제 요약문 : my cats love the classic 
+예측 요약문 :  my cats love it
+코사인 유사도 :  [[0.51014902]]
+유클리디언 유사도 :  [[0.23684114]]
+맨하탄 유사도 :  [[0.45543685]]
+
+
+원문 :  good healthy pancakes delicious family loves freeze hot quick breakfast go finally whole wheat pancake 
+실제 요약문 : yummy 
+예측 요약문 :  best gf bread mix
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.47140452]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  package received diamond foods recall spring returned local store replacement much safe easy online orders 
+실제 요약문 : received product 
+예측 요약문 :  not as advertised
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  gum lasts long time tastes great worth money like sugarless gum 
+실제 요약문 : love this product 
+예측 요약문 :  the best gum
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.40824829]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  dentist actually recommended gum already chewing great texture get tough mouth pretty thin take help get avoid fillings 
+실제 요약문 : my favorite gum 
+예측 요약문 :  not what expected
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.40824829]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  looked everywhere red foil covered kisses finally found arrived quickly packed perfectly melt get crushed 
+실제 요약문 : hershey in red 
+예측 요약문 :  great cookies
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  hi say love sour take care 
+실제 요약문 : sour power watermelon count 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  fresh find watermelon often store cost per pc cents love 
+실제 요약문 : yum 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  really need know many cans also whitefish tuna buffet canned cat food thanks 
+실제 요약문 : need to know how many in case 
+예측 요약문 :  cat food
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.34833148]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  thought would taste similar really better least different enough flavor like key lime better lime least new flavor soda top line key lime soda 
+실제 요약문 : tasty 
+예측 요약문 :  not bad
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  far superior vending machines available night shift add tortillas filling tasty light meal price 
+실제 요약문 : easy to pack lunch 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  tasty product love idea natural flavor outstanding little trouble texture certainly leathery little neice loved healthy good 
+실제 요약문 : tasty 
+예측 요약문 :  great taste
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  delicious item always keep bag go bad take space quick healthy energy 
+실제 요약문 : convenient 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  whole office seems favor coffee enough flavor make stand regular overpowering 
+실제 요약문 : favorite 
+예측 요약문 :  great taste
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  like try different coffees switch lot one month another gevalia kick fell love particular roast buy gevalia month comes back season 
+실제 요약문 : excellent 
+예측 요약문 :  great coffee
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  tried coffee first time found surprised brewed drip coffee maker makes bold smooth cup coffee definitely would recommend 
+실제 요약문 : great flavor not bitter 
+예측 요약문 :  great coffee
+코사인 유사도 :  [[0.22028815]]
+유클리디언 유사도 :  [[0.36982386]]
+맨하탄 유사도 :  [[0.77493823]]
+
+
+원문 :  mother gotten hospital sent boy work loved nurse doctor kit thing put smile face treats spirit 
+실제 요약문 : mom loved it 
+예측 요약문 :  my dog loves it
+코사인 유사도 :  [[0.17077611]]
+유클리디언 유사도 :  [[0.34853757]]
+맨하탄 유사도 :  [[0.79432213]]
+
+
+원문 :  sent sick friend really appreciated thoughtful gift basket also cute perfect get well hey going sick might well get presents right 
+실제 요약문 : much gift 
+예측 요약문 :  not what expected
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  within week recieved order food snacks fresh good quality nothing stale great gifts worth loved 
+실제 요약문 : wonderful 
+예측 요약문 :  cats like it
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.51763809]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  save okay really take minutes go local rite etc put something together opinion 
+실제 요약문 : good not great 
+예측 요약문 :  not bad
+코사인 유사도 :  [[0.26055567]]
+유클리디언 유사도 :  [[0.39136581]]
+맨하탄 유사도 :  [[0.71072334]]
+
+
+원문 :  nice chunky real peanut flavor use place smooth peanut butter next batch cookies real treat 
+실제 요약문 : real peanut flavor 
+예측 요약문 :  the best
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  pleased jif extra crunchy peanut butter great baking peanut butter cookies many crisp fresh peanuts every cookie family loves baking day 
+실제 요약문 : extra crunchy peanut butter 
+예측 요약문 :  best gf bread
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.37893738]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  jif extra crunchy peanut butter best tasting buy far tried many brands settled one favorite like big peanuts like eat snack yum 
+실제 요약문 : our favorite by far 
+예측 요약문 :  great cereal
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  really like cheese flavored usually end throwing pretzel ones makes expensive snack cheese ones sooooooo good 
+실제 요약문 : mixed bag 
+예측 요약문 :  not bad
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  cheddar pretzel go together bag goldfish definitely best mix ups truly think best snack probably tasted 
+실제 요약문 : best in the mix 
+예측 요약문 :  great snack
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  good beans basic canned beans ordered amazon summer salads delivered door without haul home supermarket 
+실제 요약문 : good beans 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  cook beef roast add several mixed packages brown gravy afterwards transfer roast glass bowl serve keep leftover fridge covered blue lid 
+실제 요약문 : great gravy 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.33609693]]
+유클리디언 유사도 :  [[0.41314834]]
+맨하탄 유사도 :  [[0.58427998]]
+
+
+원문 :  everything makes delicious minutes make scones plain kinds fruit added terrific hot oven cup coffee saturday morning 
+실제 요약문 : try it you love it 
+예측 요약문 :  great taste
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.42802608]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  stretch island makes best fruit ever natural product great flavors quick shipping definite plus 
+실제 요약문 : excellent 
+예측 요약문 :  best ever
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  terriers love good way healthy snack 
+실제 요약문 : snacks 
+예측 요약문 :  great snack
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  reading title product impression twin packs meaning jars makes horrible buy issue jif great peanut butter 
+실제 요약문 : one twin pack not by 
+예측 요약문 :  great for
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.38742589]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  product arrived time everything intact highly recommend merchant anybody shopping amazon com 
+실제 요약문 : peanut butter kid 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  jif peanut taste great good peanut taste like lot use everyday week 
+실제 요약문 : peanut butter 
+예측 요약문 :  great taste
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  quick filler go hurry open eat bam 
+실제 요약문 : quick snack 
+예측 요약문 :  great food
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  love jif peanut butter placed order amazon oz jars visited local walmart found oz jars like concept buying amazon shipping tax got taken order 
+실제 요약문 : way overpriced 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  buy product costco get two oz jars math jar oz oz 
+실제 요약문 : expensive 
+예측 요약문 :  price is good
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.51763809]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  say great send apo spouse afghanistan satisfy peanut butter cravings postage free 
+실제 요약문 : strange christmas present 
+예측 요약문 :  great snack
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  exact product available sams club wow prime membership really paying product 
+실제 요약문 : what rip off 
+예측 요약문 :  price
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.51763809]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  course nice cereal canister also love knowing son getting dha used cereal exclusively year old baby 
+실제 요약문 : love this cereal 
+예측 요약문 :  great for the price
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.37893738]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  believe good child though like much still accept however believe oat kind good food 
+실제 요약문 : good 
+예측 요약문 :  good but not the best
+코사인 유사도 :  [[0.33517574]]
+유클리디언 유사도 :  [[0.35816385]]
+맨하탄 유사도 :  [[0.79178314]]
+
+
+원문 :  first rice cereal ever used baby like never problem dha oatmeal 
+실제 요약문 : it is oatmeal 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  used oatmeal three children love glad amazon sells local walmart stopped carrying thanks amazon 
+실제 요약문 : love this cereal 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  switched box cereal particular kind thinking better made son diarrhea switching back box cereal 
+실제 요약문 : prefer box cereal 
+예측 요약문 :  my baby loves it
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.37893738]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  previous commented product gelatin called gerber said source gelatin pork 
+실제 요약문 : not vegetarian 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  arrived vacuum pac foil pouch excellant price six bucks one pound much better grocery store 
+실제 요약문 : fresh and tasty 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  product advertised resealable jars actually cans slices mushy soft difficult store product cans opened product quality general poor 
+실제 요약문 : cans instead of jars as advertised 
+예측 요약문 :  not what expected
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.33820396]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  apparently second version react version pretty bad compared non version imo horrible idea 
+실제 요약문 : beware of the 
+예측 요약문 :  bad
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.51763809]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  today january th description says incorrect currently unit price comes pack probably expensive local grocery stores value pack 
+실제 요약문 : incorrect description 
+예측 요약문 :  price
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  since amazon list ingredients coconut milk water sodium sodium gum alone speaks 
+실제 요약문 : with 
+예측 요약문 :  not the best
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.51763809]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  delivered promised coconut milk cannot say different types liked lite price right 
+실제 요약문 : good 
+예측 요약문 :  great coffee
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.58578644]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  use cooking variety dishes like thai curries tried non lite variety feel like deprived lite product easy use good flavor 
+실제 요약문 : excellent great for home cooking 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.19431434]]
+유클리디언 유사도 :  [[0.35124187]]
+맨하탄 유사도 :  [[0.81451404]]
+
+
+원문 :  using herbs everything especially flavorful roasted veggies meats also great value get oz sure would even able use year 
+실제 요약문 : great flavor 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.33609693]]
+유클리디언 유사도 :  [[0.41314834]]
+맨하탄 유사도 :  [[0.58427998]]
+
+
+원문 :  daughter loves squeeze would like get variety diet great loves much 
+실제 요약문 : nice healthy organic alternative to 
+예측 요약문 :  great product
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.38742589]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  daughter eat much food one sitting eats healthy flavor one thing almost always eat whole pouch one go tasted think good 
+실제 요약문 : one of my daughter favorites 
+예측 요약문 :  my son loves it
+코사인 유사도 :  [[0.12735953]]
+유클리디언 유사도 :  [[0.31442533]]
+맨하탄 유사도 :  [[0.84045345]]
+
+
+원문 :  good would eat one baby months baby food pouches watery likes hold drink got hoping would little thicker thick loves really good price 
+실제 요약문 : yummy 
+예측 요약문 :  my baby loves it
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.47140452]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  portable fruit incentive daughter finish meal getting one sucks right also husband dentist course allowed juice fits bill 
+실제 요약문 : old daughter loves this 
+예측 요약문 :  not the best
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.37893738]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  product great however taste peaches little bitter daughter 
+실제 요약문 : good but 
+예측 요약문 :  good but not too expensive
+코사인 유사도 :  [[0.50232878]]
+유클리디언 유사도 :  [[0.27542574]]
+맨하탄 유사도 :  [[0.60776052]]
+
+
+원문 :  coffee cake good worth pay extra money available supermarkets state would percent savings really moist flavorful worth price 
+실제 요약문 : expensive but worth it 
+예측 요약문 :  great espresso
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.41421356]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  good cakes last christmas balance flavors right sweet much cinnamon nice gooey top 
+실제 요약문 : good cakes 
+예측 요약문 :  good stuff
+코사인 유사도 :  [[0.33609693]]
+유클리디언 유사도 :  [[0.41314834]]
+맨하탄 유사도 :  [[0.58427998]]
+
+
+원문 :  pleased nuts went fast even shared friends keep fridge freezer shelf life 
+실제 요약문 : these are nuts 
+예측 요약문 :  great taste
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  ultimate fudge well worth price gave neighbor part order impressed quality fudge 
+실제 요약문 : chocolate fudge 
+예측 요약문 :  great gum
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.5]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  another great product eden foods made japan ingredients without artificial yellow food coloring find overly salty perfect japanese korean style nori rolls 
+실제 요약문 : delicious 
+예측 요약문 :  great for the
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.51763809]]
+맨하탄 유사도 :  [[1.]]
+
+
+원문 :  excited disappointed got salty unlike sweeter ones japanese restaurants outside also thick texture remove crunchy 
+실제 요약문 : not what you get at 
+예측 요약문 :  not bad
+코사인 유사도 :  [[0.19431434]]
+유클리디언 유사도 :  [[0.35124187]]
+맨하탄 유사도 :  [[0.81451404]]
+
+
+원문 :  even washed soaked water long time still salty good 
+실제 요약문 : way too salty 
+예측 요약문 :  not bad
+코사인 유사도 :  [[0.]]
+유클리디언 유사도 :  [[0.44948974]]
+맨하탄 유사도 :  [[1.]]
+
+
+코사인 유사도 평균 :  [[0.1009425]]
+유클리디언 유사도 평균 :  [[0.43060662]]
+맨하탄 유사도 평균 :  0.0
+
+Process finished with exit code 0
