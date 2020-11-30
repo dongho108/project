@@ -16,8 +16,8 @@
 
 ### training된 모델을 이용해 텍스트 요약해보기
 1. attention이 미적용된 파일은 seq2seq_run.py를, attention이 적용된 파일은 Attention_run.py를 열어주세요.
-1. test할 데이터에도 전처리가 필요하기 때문에 training시 사용한 전처리과정을 그대로 사용합니다.
-2. 원하는 모델을 사용하기 위해 numData에는 몇개의 데이터를 학습시킨 모델을 사용할건지, text_max_len에는 최대길이를 몇으로 제한한 모델을 사용할건지 입력해줍니다.
+2. 100000, 200000개의 데이터가 학습된 모델이 이미 준비되어 있습니다. 3번을 통해 변수값을 바꿔주시고 바로 이용해주시면 됩니다.
+3. 원하는 모델을 사용하기 위해 numData에는 몇개의 데이터를 학습시킨 모델을 사용할건지, text_max_len에는 최대길이를 몇으로 제한한 모델을 사용할건지 입력해줍니다.
 ```
 numData = 200000
 name_Model = "seq2seq_Model_"+str(numData)
@@ -25,7 +25,8 @@ name_encoder_model = "seq2seq_encoder_Model_"+str(numData)
 name_decoder_model = "seq2seq_decoder_Model_"+str(numData)
 text_max_len = 50
 ```
-3. run 해주시면 알아서 진행됩니다!
+4. (참고)test할 데이터에도 전처리가 필요하기 때문에 training시 사용한 전처리과정을 그대로 사용합니다.
+5. run 해주시면 알아서 진행됩니다! (아래는 출력 예시)
 ```
 원문 :  enjoying nutiva certified organic extra virgin coconut oil moderate low carb food plan fits right healthy diet use making low carb chocolate candy low carb chocolate cake spread use moisturizer skin also thought good value money completely satisfied 
 실제 요약문 : completely satisfied 
