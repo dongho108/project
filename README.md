@@ -7,7 +7,7 @@
 1. 제 파일들을 전부 clone 해주세요
 2. import가 필요한 pakage들을 install 해주세요.
 3. 데이터 다운 : ```https://www.kaggle.com/snap/amazon-fine-food-reviews``` 에서 ```reviews.csv``` 를 다운받아주세요.
-4.
+4. attention.py를 다운받아주세요
 > 1) ```https://raw.githubusercontent.com/thushv89/attention_keras/master/src/layers/attention.py```에서 직접 다운받거나  
 > 2) ```urllib.request.urlretrieve("https://raw.githubusercontent.com/thushv89/attention_keras/master/src/layers/attention.py", filename="attention.py")```를 통해 다운받은후  
 
