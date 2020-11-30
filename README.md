@@ -15,6 +15,7 @@
 
 
 ### training된 모델을 이용해 텍스트 요약해보기
+1. attention이 미적용된 파일은 seq2seq_run.py를, attention이 적용된 파일은 Attention_run.py를 열어주세요.
 1. test할 데이터에도 전처리가 필요하기 때문에 training시 사용한 전처리과정을 그대로 사용합니다.
 2. 원하는 모델을 사용하기 위해 numData에는 몇개의 데이터를 학습시킨 모델을 사용할건지, text_max_len에는 최대길이를 몇으로 제한한 모델을 사용할건지 입력해줍니다.
 ```
