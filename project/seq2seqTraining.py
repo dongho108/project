@@ -2,26 +2,31 @@ import numpy as np
 import pandas as pd
 import re
 import matplotlib.pyplot as plt
-import nltk
 from nltk.corpus import stopwords
 from bs4 import BeautifulSoup
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.layers import Input, LSTM, Embedding, Dense, Concatenate
 from tensorflow.keras.models import Model
-import tensorflow as tf
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-import urllib.request
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
+# ㅡㅡㅡㅡㅡㅡㅡㅡㅡ 직접 작성한 부분 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㄱ
+numData = 200
+text_max_len = 50
 
-
+name_Model = "seq2seq_Model_"+str(numData)
+name_encoder_model = "seq2seq_encoder_Model_"+str(numData)
+name_decoder_model = "seq2seq_decoder_Model_"+str(numData)
+# ㄴㅡㅡㅡㅡㅡㅡㅡㅡㅡ 직접 작성한 부분 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 
 ##************** data refactoring ****************
 
 np.random.seed(seed=0)
 #data load
-data = pd.read_csv("Reviews.csv", nrows = 100)
+data = pd.read_csv("Reviews.csv", nrows = numData)
 data = data[['Text', 'Summary']]
 
 #data refine
@@ -138,7 +143,6 @@ summary_len = [len(s.split()) for s in data['Summary']]
 # plt.ylabel('number of samples')
 # plt.show()
 
-text_max_len = 50
 summary_max_len = 8
 
 def below_threshold_len(max_len, nested_list):
@@ -305,7 +309,7 @@ encoder_output2, state_h2, state_c2 = encoder_lstm2(encoder_output1)
 
 # 인코더의 LSTM 3
 encoder_lstm3 = LSTM(hidden_size, return_state=True, return_sequences=True, dropout=0.4, recurrent_dropout=0.4)
-encoder_outputs, state_h, state_c= encoder_lstm3(encoder_output2)
+encoder_outputs, state_h, state_c = encoder_lstm3(encoder_output2)
 
 
 # 디코더
@@ -325,10 +329,15 @@ decoder_softmax_outputs = decoder_softmax_layer(decoder_outputs)
 
 # 모델 정의
 model = Model([encoder_inputs, decoder_inputs], decoder_softmax_outputs)
-# print(model.summary())
+print(model.summary())
 
 
 model.compile(optimizer='rmsprop', loss='sparse_categorical_crossentropy')
+
+# ㅡㅡㅡㅡㅡㅡㅡㅡㅡ 직접 작성한 부분 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+model.save(name_Model)
+# ㅡㅡㅡㅡㅡㅡㅡㅡㅡ 직접 작성한 부분 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
 
 es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience = 2)
 history = model.fit(x = [encoder_input_train, decoder_input_train], y = decoder_target_train, \
@@ -351,7 +360,9 @@ tar_index_to_word = tar_tokenizer.index_word # 요약 단어 집합에서 정수
 
 # 모델 테스트를 위한 seq2seq 모델
 
-encoder_model = Model(input=encoder_inputs, output=[encoder_outputs])
+# ㅡㅡㅡㅡㅡㅡㅡㅡㅡ 직접 작성한 부분 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㄱ
+encoder_model = Model(inputs=encoder_inputs, outputs=[state_h, state_c])
+encoder_model.save(name_encoder_model)
 
 decoder_state_input_h = Input(shape=(hidden_size,))
 decoder_state_input_c = Input(shape=(hidden_size,))
@@ -363,62 +374,10 @@ decoder_outputs2, state_h, state_c = decoder_lstm(dec_emb2, initial_state=[decod
 
 decoder_outputs2 = decoder_softmax_layer(decoder_outputs2)
 decoder_model = Model(inputs=[decoder_inputs] + [decoder_state_input_h, decoder_state_input_c], outputs=[decoder_outputs2] + [state_h, state_c])
+# decoder_model.save(name_decoder_model)
 
-
-
-
-
-def decode_sequence(input_seq):
-    # 입력으로부터 인코더의 상태를 얻음
-    e_out, e_h, e_c = encoder_model.predict(input_seq)
-
-     # <SOS>에 해당하는 토큰 생성
-    target_seq = np.zeros((1,1))
-    target_seq[0, 0] = tar_word_to_index['sostoken']
-
-    stop_condition = False
-    decoded_sentence = ''
-    while not stop_condition: # stop_condition이 True가 될 때까지 루프 반복
-
-        output_tokens, h, c = decoder_model.predict([target_seq] + [e_out, e_h, e_c])
-        sampled_token_index = np.argmax(output_tokens[0, -1, :])
-        sampled_token = tar_index_to_word[sampled_token_index]
-
-        if(sampled_token!='eostoken'):
-            decoded_sentence += ' '+sampled_token
-
-        #  <eos>에 도달하거나 최대 길이를 넘으면 중단.
-        if (sampled_token == 'eostoken'  or len(decoded_sentence.split()) >= (summary_max_len-1)):
-            stop_condition = True
-
-        # 길이가 1인 타겟 시퀀스를 업데이트
-        target_seq = np.zeros((1,1))
-        target_seq[0, 0] = sampled_token_index
-
-        # 상태를 업데이트 합니다.
-        e_h, e_c = h, c
-
-    return decoded_sentence
-
-# 원문의 정수 시퀀스를 텍스트 시퀀스로 변환
-def seq2text(input_seq):
-    temp=''
-    for i in input_seq:
-        if(i!=0):
-            temp = temp + src_index_to_word[i]+' '
-    return temp
-
-# 요약문의 정수 시퀀스를 텍스트 시퀀스로 변환
-def seq2summary(input_seq):
-    temp=''
-    for i in input_seq:
-        if((i!=0 and i!=tar_word_to_index['sostoken']) and i!=tar_word_to_index['eostoken']):
-            temp = temp + tar_index_to_word[i] + ' '
-    return temp
-
-for i in range(10):
-    print("원문 : ",seq2text(encoder_input_test[i]))
-    print("실제 요약문 :",seq2summary(decoder_input_test[i]))
-    print("예측 요약문 :",decode_sequence(encoder_input_test[i].reshape(1, text_max_len)))
-    print("\n")
-
+print("\n %d개 데이터 학습시킨 모델 생성 완료" % numData)
+print("training seq2seq name : %s" % name_Model)
+print("test encoder name : %s" % name_encoder_model)
+print("test decoder name : %s" % name_decoder_model)
+#ㄴㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 직접 작성한 부분 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
